@@ -37,20 +37,20 @@ namespace mvc.Controllers
         {
             if (id != student.Id)
             {
-                return BadRequest(); // Handle ID mismatch
+                return BadRequest(); 
             }
-
-            if (ModelState.IsValid)
+        // Déclencher mécanisme de validation
+            if (ModelState.IsValid) 
             {
                 var index = _students.FindIndex(s => s.Id == id);
                 if (index != -1)
                 {
-                    _students[index] = student; // Update student in the list
+                    _students[index] = student; 
                     return RedirectToAction(nameof(Index));
                 }
             }
 
-            return View(student); // Re-render view with validation errors
+            return View(student); 
         }
 
         public IActionResult Add(Student student)
