@@ -1,19 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
 
-using mvc.Models;
+using mvcTemplate.Models;
+using mvcTemplate.Data;
 
-public class TeacherController : Controller
+public class TeachController : Controller
 {
-    // liste d'enseignants
+    // Champ privé pour stocker DbContext (not used in this example)
+    private readonly AppDbContext _context;
+
+    public TeachController(AppDbContext context) // Injecting AppDbContext (optional)
+    {
+        _context = context;
+    }
+
+    // Liste d'enseignants (static for this example)
     private static List<Teacher> _teachers = new List<Teacher>
     {
-        new Teacher { Id = 1, Lastname = "Doe", Firstname = "John" },
-        new Teacher { Id = 2, Lastname = "Smith", Firstname = "Jane" }
     };
-
 
     public IActionResult Index()
     {
         return View(_teachers);
+    }
+    [HttpPost]
+    public IActionResult Add(Teacher teacher)
+    {
+        // Declencher le mecanisme de validation
+        if (!ModelState.IsValid)
+        {
+            return View();
+        }
+        // Ajouter le teacher
+        _context.Teachers.Add(teacher);
+
+        // Sauvegarder les changements
+        _context.SaveChanges();
+        return RedirectToAction("Index");
     }
 }

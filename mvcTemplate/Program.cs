@@ -1,9 +1,22 @@
+using mvcTemplate.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+ 
+builder.Services.AddDbContext<AppDbContext>(options =>
 
-// Add services to the container.
+    options.UseMySql(
+
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+
+        new MySqlServerVersion(new Version(8, 0, 31))
+
+    ));
+ 
 builder.Services.AddControllersWithViews();
-
+ 
 var app = builder.Build();
+ 
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
