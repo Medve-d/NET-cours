@@ -1,17 +1,33 @@
-@model IEnumerable<Teacher>
+@model IEnumerable<mvc.Models.Teacher>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-    </tr>
-    @foreach (var teacher in Model)
-    {
+<h1>Liste des enseignants</h1>
+
+<table class="table">
+    <thead>
         <tr>
-            <td>@teacher.Id</td>
-            <td>@teacher.Lastname</td>
-            <td>@teacher.Firstname</td>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Site Web Personnel</th>
+            <th>Actions</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td>@teacher.Lastname</td>
+                <td>@teacher.Firstname</td>
+                <td>@teacher.PersonalWebSite</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@teacher.Id" class="btn btn-warning">Modifier</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@teacher.Id" />
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<a asp-action="Add" class="btn btn-primary">Ajouter un enseignant</a>

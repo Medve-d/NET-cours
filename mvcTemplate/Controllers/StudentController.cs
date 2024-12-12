@@ -1,69 +1,71 @@
 using Microsoft.AspNetCore.Mvc;
-using mvcTemplate.Models;
+using Microsoft.EntityFrameworkCore;
+using mvc.Data;
+using mvc.Models;
 
 namespace mvc.Controllers
 {
     public class StudentController : Controller
     {
-        // Creation d'une liste statique de Student
-        private static List<Student> _students = new List<Student>
-        {
-            new Student { Id = 1, Nom = "Alice", Age = 20, Specialite = "Informatique" },
-            new Student { Id = 2, Nom = "Bob", Age = 22, Specialite = "Mathématiques" },
-            new Student { Id = 3, Nom = "Charlie", Age = 21, Specialite = "Physique" }
-        };
+        private readonly AppDbContext _context;
 
-        // GET: StudentController/Index
-        public ActionResult Index()
+        public StudentController(AppDbContext context)
         {
-            return View(_students);
+            _context = context;
         }
 
-        // GET: StudentController/Edit/id
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Index()
         {
-            var student = _students.FirstOrDefault(s => s.Id == id);
-            if (student == null)
-            {
-                return NotFound(); // Handle student not found
-            }
-
-            return View(student);
+            var students = await _context.Students.ToListAsync();
+            return View(students);
         }
 
-        // POST: StudentController/Edit/id
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        // Action pour créer un étudiant
         [HttpPost]
-        public IActionResult Edit(int id, Student student)
-        {
-            if (id != student.Id)
-            {
-                return BadRequest(); 
-            }
-        // Déclencher mécanisme de validation
-            if (ModelState.IsValid) 
-            {
-                var index = _students.FindIndex(s => s.Id == id);
-                if (index != -1)
-                {
-                    _students[index] = student; 
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-
-            return View(student); 
-        }
-
-        public IActionResult Add(Student student)
+        public async Task<IActionResult> Add(Student student)
         {
             if (ModelState.IsValid)
             {
-                student.Id = _students.Max(e => e.Id) + 1;
-                _students.Add(student);
-                return RedirectToAction(nameof(Index));
+                _context.Students.Add(student);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index)); // Redirection
             }
+
+
             return View(student);
         }
-        
+
+        public async Task<IActionResult> Edit(int id)
+{
+    var student = await _context.Students.FindAsync(id);
+    if (student == null) return NotFound();
+    return View(student);
+}
+
+
+
+        // Action pour supprimer un étudiant
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student != null)
+            {
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));  // Redirige vers la liste après suppression
+        }
+
+        // Méthode pour vérifier si l'étudiant existe
+        private bool StudentExists(int id)
+        {
+            return _context.Students.Any(e => e.Id == id);
+        }
     }
 }
-    

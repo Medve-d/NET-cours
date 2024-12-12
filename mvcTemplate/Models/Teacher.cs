@@ -1,14 +1,15 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
-using mvcTemplate.Data;
-namespace mvcTemplate.Models;
+using Microsoft.AspNetCore.Identity;
 
-public class Teacher
+namespace mvc.Models
 {
-    [Required]
-    public int Id { get; set; }
-    [Required]
-    public string Lastname { get; set; }
-    [Required]
-    public string Firstname { get; set; }
+    public class Teacher : IdentityUser
+    {
+        public string Lastname { get; set; }
+        public string Firstname { get; set; }
+        
+        [Required]
+        [Url]
+        public string PersonalWebSite { get; set; }
+    }
 }

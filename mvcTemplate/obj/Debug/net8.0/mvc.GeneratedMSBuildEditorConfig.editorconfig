@@ -18,6 +18,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\gamen\github\cours-net\NET-cours\mvcTemplate
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Event/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Event/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Event/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,8 +70,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Teacher/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Teacher/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/Teacher/ShowDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclxTaG93RGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gamen/github/cours-net/NET-cours/mvcTemplate/Views/_ViewImports.cshtml]

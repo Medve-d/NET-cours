@@ -1,0 +1,43 @@
+@model IEnumerable<mvc.Models.Event>
+
+<h1>Liste des événements</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Date de l'événement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Location</td>
+                    <td>@item.EventDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Event", new { id = item.Id })" class="btn btn-info">Détails</a>
+                        @if (User.IsInRole("Teacher"))
+                        {
+                            <a href="@Url.Action("Edit", "Event", new { id = item.Id })" class="btn btn-warning">Modifier</a>
+                            <form action="@Url.Action("Delete", "Event", new { id = item.Id })" method="post" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Aucun événement trouvé.</p>
+}
