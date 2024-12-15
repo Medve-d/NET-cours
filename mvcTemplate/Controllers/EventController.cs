@@ -16,21 +16,20 @@ public class EventController : Controller
         _userManager = userManager;
     }
 
-    // Afficher la liste des événements (accessible par tous)
     public IActionResult Index()
     {
         var events = _context.Events.ToList();
         return View(events);
     }
 
-    // Afficher les détails d'un événement (accessible par tous)
+
     public IActionResult Details(int id)
     {
         var eventDetails = _context.Events.Find(id);
         return View(eventDetails);
     }
 
-    // Créer un événement (accessible uniquement par les Teachers)
+
     [Authorize]
     public IActionResult Add()
     {
@@ -42,11 +41,10 @@ public class EventController : Controller
         }
         else
         {
-            return RedirectToAction("AccessDenied", "Account"); // Rediriger vers la page d'accès refusé
+            return RedirectToAction("AccessDenied", "Account"); 
         }
     }
 
-    // Modifier un événement (accessible uniquement par les Teachers)
     [Authorize]
     public IActionResult Edit(int id)
     {
@@ -63,7 +61,6 @@ public class EventController : Controller
         }
     }
 
-    // Supprimer un événement (accessible uniquement par les Teachers)
     [Authorize]
     public IActionResult Delete(int id)
     {

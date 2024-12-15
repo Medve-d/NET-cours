@@ -188,7 +188,7 @@ namespace mvc.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Firstname")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Lastname")
@@ -209,6 +209,9 @@ namespace mvc.Migrations
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PersonalWebSite")
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")

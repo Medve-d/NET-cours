@@ -11,7 +11,7 @@ using mvc.Data;
 namespace mvc.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241212112623_initial")]
+    [Migration("20241212151728_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -191,7 +191,7 @@ namespace mvc.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("Firstname")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Lastname")
@@ -212,6 +212,9 @@ namespace mvc.Migrations
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PersonalWebSite")
                         .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")

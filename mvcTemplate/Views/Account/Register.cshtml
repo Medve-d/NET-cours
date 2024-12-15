@@ -1,36 +1,41 @@
-@using mvc.Models
 @model mvc.Models.RegisterViewModel
 
 <form asp-action="Register" method="post">
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="Firstname"></label>
-        <input asp-for="Firstname" />
-        <span asp-validation-for="Firstname"></span>
+
+    <div class="form-group">
+        <label asp-for="Firstname" class="control-label"></label>
+        <input asp-for="Firstname" class="form-control" />
+        <span asp-validation-for="Firstname" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="Lastname"></label>
-        <input asp-for="Lastname" />
-        <span asp-validation-for="Lastname"></span>
+
+    <div class="form-group">
+        <label asp-for="Lastname" class="control-label"></label>
+        <input asp-for="Lastname" class="form-control" />
+        <span asp-validation-for="Lastname" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="PersonalWebSite"></label>
-        <input asp-for="PersonalWebSite" />
-        <span asp-validation-for="PersonalWebSite"></span>
+
+    <div class="form-group">
+        <label asp-for="PersonalWebSite" class="control-label"></label>
+        <input asp-for="PersonalWebSite" class="form-control" />
+        <span asp-validation-for="PersonalWebSite" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
+
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" type="password" />
-        <span asp-validation-for="ConfirmPassword"></span>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="control-label"></label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-    <button type="submit">Register</button>
+
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>

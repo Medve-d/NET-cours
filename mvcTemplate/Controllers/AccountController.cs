@@ -16,16 +16,15 @@ namespace mvc.Controllers
             _signInManager = signInManager;
         }
 
-        // Affiche la page de connexion
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
-        // Traitement de la connexion de l'utilisateur
+
         [HttpPost]
-        [ValidateAntiForgeryToken] // Ajout de la validation CSRF pour plus de sécurité
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -52,26 +51,23 @@ namespace mvc.Controllers
             return View(model);
         }
 
-        // Affiche la page d'enregistrement
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
-        // Traitement de l'enregistrement d'un nouvel utilisateur
         [HttpPost]
-        [ValidateAntiForgeryToken] // Ajout de la validation CSRF pour plus de sécurité
+        [ValidateAntiForgeryToken] 
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Création d'un nouvel utilisateur
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    Firstname = model.Firstname, // Propriétés personnalisées
+                    Firstname = model.Firstname,
                     Lastname = model.Lastname,
                     PersonalWebSite = model.PersonalWebSite
                 };
@@ -79,23 +75,21 @@ namespace mvc.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Connecte automatiquement l'utilisateur après l'enregistrement
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
 
-                // Gestion des erreurs d'enregistrement
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
-            // Si la validation échoue, retourner à la vue avec les erreurs
             return View(model);
         }
 
-        // Déconnexion de l'utilisateur
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

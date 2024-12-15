@@ -25,7 +25,6 @@ namespace mvc.Controllers
             return View();
         }
 
-        // Action pour créer un étudiant
         [HttpPost]
         public async Task<IActionResult> Add(Student student)
         {
@@ -33,7 +32,7 @@ namespace mvc.Controllers
             {
                 _context.Students.Add(student);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Redirection
+                return RedirectToAction(nameof(Index)); 
             }
 
 
@@ -47,9 +46,6 @@ namespace mvc.Controllers
     return View(student);
 }
 
-
-
-        // Action pour supprimer un étudiant
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -59,10 +55,9 @@ namespace mvc.Controllers
                 _context.Students.Remove(student);
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction(nameof(Index));  // Redirige vers la liste après suppression
+            return RedirectToAction(nameof(Index));  
         }
 
-        // Méthode pour vérifier si l'étudiant existe
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.Id == id);

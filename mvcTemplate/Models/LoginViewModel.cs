@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+namespace mvc.Models;
 public class LoginViewModel
 {
     [Required]
